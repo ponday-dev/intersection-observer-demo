@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="image" data-url="images/01.jpg" data-target="image__01"><img src="" alt="01" id="image__01"></li>
+        <li class="image" data-url="images/02.jpg" data-target="image__02"><img src="" alt="02" id="image__02"></li>
+        <li class="image" data-url="images/03.jpg" data-target="image__03"><img src="" alt="03" id="image__03"></li>
+        <li class="image" data-url="images/04.jpg" data-target="image__04"><img src="" alt="04" id="image__04"></li>
+        <li class="image" data-url="images/05.jpg" data-target="image__05"><img src="" alt="05" id="image__05"></li>
+        <li class="image" data-url="images/06.jpg" data-target="image__06"><img src="" alt="06" id="image__06"></li>
+        <li class="image" data-url="images/07.jpg" data-target="image__07"><img src="" alt="07" id="image__07"></li>
+        <li class="image" data-url="images/08.jpg" data-target="image__08"><img src="" alt="08" id="image__08"></li>
+        <li class="image" data-url="images/09.jpg" data-target="image__09"><img src="" alt="09" id="image__09"></li>
+        <li class="image" data-url="images/10.jpg" data-target="image__10"><img src="" alt="10" id="image__10"></li>
+        <li class="image" data-url="images/11.jpg" data-target="image__11"><img src="" alt="11" id="image__11"></li>
+        <li class="image" data-url="images/12.jpg" data-target="image__12"><img src="" alt="12" id="image__12"></li>
+        <li class="image" data-url="images/13.jpg" data-target="image__13"><img src="" alt="13" id="image__13"></li>
+        <li class="image" data-url="images/14.jpg" data-target="image__14"><img src="" alt="14" id="image__14"></li>
+        <li class="image" data-url="images/15.jpg" data-target="image__15"><img src="" alt="15" id="image__15"></li>
+        <li class="image" data-url="images/16.jpg" data-target="image__16"><img src="" alt="16" id="image__16"></li>
+        <li class="image" data-url="images/17.jpg" data-target="image__17"><img src="" alt="17" id="image__17"></li>
+        <li class="image" data-url="images/18.jpg" data-target="image__18"><img src="" alt="18" id="image__18"></li>
+        <li class="image" data-url="images/19.jpg" data-target="image__19"><img src="" alt="19" id="image__19"></li>
+        <li class="image" data-url="images/20.jpg" data-target="image__20"><img src="" alt="20" id="image__20"></li>
+    </ul>
+    <script>
+        const images = document.querySelectorAll('.image');
+        for (let image of images) {
+            console.log('image');
+            let observer = new IntersectionObserver(entries => {
+                let e = entries[0];
+                if (e.isIntersecting) {
+                    document.getElementById(e.target.dataset.target).src = e.target.dataset.url;
+                    observer.unobserve(image);
+                }
+            });
+            observer.observe(image);
+        }
+    </script>
+</body>
+</html>
